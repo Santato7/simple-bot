@@ -1,3 +1,3 @@
-# GoLinks
+# simple-bot
 
-Um encurtador de URLs simples.
+Um simples bot para atendimento automatizado via whatsapp.
