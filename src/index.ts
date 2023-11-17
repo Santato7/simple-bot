@@ -1,5 +1,6 @@
 import { Client, LocalAuth } from "whatsapp-web.js";
 import qrcode from "qrcode-terminal";
+import handleMessage from "./handleMessage";
 
 const client: Client = new Client({
   authStrategy: new LocalAuth(),
@@ -16,10 +17,10 @@ client.on("ready", () => {
 client.initialize();
 
 client.on("message", (message) => {
-  if (message.author === undefined && !message.isStatus) {
-    console.log("aaaaaaaaaaaaaaaaaaaaa");
+  if (!message.author === undefined || message.isStatus) {
+    return;
   }
-  console.log(`Autor: ${message.from}, Mensagem: ${message.body}`);
+  handleMessage(client, message);
 });
 
 client.on("message", (message) => {
